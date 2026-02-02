@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Lezzet Menüsü</title>
+    <!-- Google Fonts for Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Model Viewer Component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section using Glassmorphism -->
+    <header class="glass-header">
+        <div class="logo">
+            <h1>Gourmet<span class="highlight">AR</span></h1>
+        </div>
+        <p class="subtitle">Lezzeti Masanızda Üç Boyutlu Görün</p>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        
+        <!-- Category Filter (Optional for future, static for now) -->
+        <div class="category-scroll">
+            <button class="cat-btn active">Tümü</button>
+            <button class="cat-btn">Burgerler</button>
+            <button class="cat-btn">Pizzalar</button>
+            <button class="cat-btn">Tatlılar</button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="menu-grid" id="menu-grid">
+            <!-- Dynamic Content will be injected here by script.js -->
+        </div>
+
+    </main>
+
+    <!-- AR Modal / Visualization Area -->
+    <!-- Ideally, for mobile AR, we often navigate to a specific view or open a modal. 
+         We'll use a hidden modal that reveals the model-viewer when a user clicks an item. -->
+    <div id="ar-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <button id="close-modal" class="close-btn">&times;</button>
+            <div class="model-container">
+                <!-- model-viewer will be injected or updated here -->
+                <model-viewer 
+                    id="viewer"
+                    src="" 
+                    ios-src=""
+                    poster="https://via.placeholder.com/400x300?text=Yukleniyor..."
+                    alt="3D Yemek Modeli"
+                    shadow-intensity="1"
+                    camera-controls
+                    auto-rotate
+                    ar
+                    ar-modes="scene-viewer webxr quick-look"
+                    ar-scale="auto">
+                      
+                    <button slot="ar-button" id="ar-button">
+                        👋 Masanda Gör (AR)
+                    </button>
+                    
+                    <div id="ar-prompt">
+                        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+                    </div>
+                </model-viewer>
+            </div>
+            <div class="item-details">
+                <h2 id="modal-title">Ürün Adı</h2>
+                <p id="modal-desc">Ürün açıklaması burada yer alacak.</p>
+                <div class="price-tag" id="modal-price">150₺</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
